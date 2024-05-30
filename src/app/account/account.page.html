@@ -1,0 +1,60 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Account Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input [(ngModel)]="customer.name" placeholder="Enter your name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="customer.email" placeholder="Enter your email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Phone</ion-label>
+        <ion-input [(ngModel)]="customer.phone" placeholder="Enter your phone number"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="saveCustomerDetails()">Save Details</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Past Orders</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let order of pastOrders">
+          <ion-label>
+            <h2>{{ order.restaurant.name }}</h2>
+            <p>{{ order.restaurant.type }}</p>
+            <p>Total: {{ order.grandTotal | currency:'ZAR' }}</p>
+          </ion-label>
+          <ion-button (click)="reorder(order)">Reorder</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Manage Addresses</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Apartments on William, 180 William Street, Brooklyn, 0011</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="openHelpModal()">Get Help</ion-button>
+  <ion-button expand="block" color="danger" (click)="logout()">Logout</ion-button>
+
+</ion-content>

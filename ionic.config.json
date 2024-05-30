@@ -1,0 +1,7 @@
+{
+  "name": "myAssignment2App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="borderBottom">
+    <swiper-container [modules]="swiperModules"
+    [slidesPerView]="1.2"
+    [CenteredSlides]="true"
+    [autoplay]="true"
+    [pagination]="{clickable:true, dynamicBullets: true}"
+    [spaceBetween]="20">
+      <swiper-slide>
+        <img src='assets/ChurroBites.jpeg'>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+  <ion-list>
+    <ion-list-header class="ion-margin-bottom">
+      <ion-label>
+        <h4>Restaurants Nearby</h4>
+        <p>Explore the best foods in town!</p>
+      </ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let restaurant of restaurants" (click)="selectRestaurant(restaurant)">
+      <ion-thumbnail slot="start" class="large-thumbnail">
+        <img [src]="restaurant.imageUrl">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ restaurant.name }}</h2>
+        <p>Type: {{ restaurant.type }}</p>
+        <p>Top Dish: {{ restaurant.topDish }}</p>
+        <p>Ratings: {{ restaurant.ratings }}</p>
+        <p>Distance: {{ restaurant.distance }} km</p>
+        <p>Price: {{ restaurant.price | currency:'ZAR' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

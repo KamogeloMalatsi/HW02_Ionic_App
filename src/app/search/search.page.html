@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search</ion-title>
+    <br/>
+    <br/>
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="searchRestaurants($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let restaurant of filteredRestaurants" (click)="selectRestaurant(restaurant)">
+      <ion-thumbnail slot="start" class="large-thumbnail">
+        <img [src]="restaurant.imageUrl">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ restaurant.name }}</h2>
+        <p>Type: {{ restaurant.type }}</p>
+        <p>Top Dish: {{ restaurant.topDish }}</p>
+        <p>Ratings: {{ restaurant.ratings }}</p>
+        <p>Distance: {{ restaurant.distance }} km</p>
+        <p>Price: {{ restaurant.price | currency:'ZAR' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
